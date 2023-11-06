@@ -37,6 +37,18 @@ public class GameLevelPanel extends JPanel {
         });
     }
 
+    public static void hitWall() {
+        JOptionPane hitWall = new JOptionPane("推不动啦，换个方向看看？");
+        JDialog dialog = hitWall.createDialog(game, "提示");
+        Timer timer = new Timer(2000, e -> dialog.dispose());
+
+        timer.setRepeats(false);
+        timer.start();
+        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dialog.setModalityType(Dialog.ModalityType.MODELESS);
+        dialog.setVisible(true);
+    }
+
     public void togglePauseMenu() {
         pausePanel.setVisible(!pausePanel.isVisible());
         repaint();
@@ -65,17 +77,5 @@ public class GameLevelPanel extends JPanel {
         // Initially, the pause panel is not visible
         pausePanel.setVisible(false);
 
-    }
-
-    public static void hitWall() {
-        JOptionPane hitWall = new JOptionPane("推不动啦，换个方向看看？");
-        JDialog dialog = hitWall.createDialog(game, "提示");
-        Timer timer = new Timer(2000, e -> dialog.dispose());
-
-        timer.setRepeats(false);
-        timer.start();
-        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        dialog.setModalityType(Dialog.ModalityType.MODELESS);
-        dialog.setVisible(true);
     }
 }

@@ -6,21 +6,19 @@ import java.awt.event.KeyListener;
 
 public class Sokoban extends JFrame implements KeyListener {
 
-    public int levels = 1;
-    public int steps = 0;
-    private int leftX = 50;
-    private int leftY = 50;
-
-    private int playerX, playerY;
-    private int cache = ROAD;
-    private int[][] currentLevel;
-
     private static final int WALL = 1;
     private static final int PLAYER = 2;
     private static final int BOX = 3;
     private static final int ROAD = 4;
     private static final int DEST = 5;
     private static final int BOX_DEST = 6;
+    public int levels = 1;
+    public int steps = 0;
+    private int leftX = 50;
+    private int leftY = 50;
+    private int playerX, playerY;
+    private int cache = ROAD;
+    private int[][] currentLevel;
 
     public Sokoban() {
         setTitle("sokoban");
@@ -42,6 +40,13 @@ public class Sokoban extends JFrame implements KeyListener {
         });
     }
 
+    public static void exitGame(JFrame frame) {
+        if (frame != null) {
+            frame.dispose();
+            System.exit(0);
+        }
+    }
+
     public void switchToGameLevelPanel() {
         getContentPane().removeAll();  // 移除所有组件
         GameLevelPanel gameLevelPanel = new GameLevelPanel(this);
@@ -52,13 +57,6 @@ public class Sokoban extends JFrame implements KeyListener {
 
     public void initLevel(int levels) {
         currentLevel = Levels.getLevel(levels);
-    }
-
-    public static void exitGame(JFrame frame) {
-        if(frame != null) {
-            frame.dispose();
-            System.exit(0);
-        }
     }
 
     public void getPlayerPosition() {
