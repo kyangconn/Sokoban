@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GameLevel">
+  <grid id="27dc6" binding="gameLevel" layout-manager="CardLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="79570" binding="gameDisplay" layout-manager="FormLayout">
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:5dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:5dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:5dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:5dlu:noGrow"/>
+        <rowspec value="center:max(d;20px):grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:14px:noGrow"/>
+        <colspec value="fill:max(d;20px):grow"/>
+        <colspec value="left:5dlu:noGrow"/>
+        <colspec value="fill:max(d;20px):grow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;20px):grow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;20px):grow"/>
+        <colspec value="left:5dlu:noGrow"/>
+        <colspec value="fill:max(d;20px):grow"/>
+        <colspec value="left:5dlu:noGrow"/>
+        <colspec value="fill:max(d;20px):grow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:17px:grow"/>
+        <colspec value="left:5dlu:noGrow"/>
+        <colspec value="fill:max(d;20px):grow"/>
+        <colspec value="left:5dlu:noGrow"/>
+        <colspec value="fill:max(d;20px):grow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:d:grow"/>
+        <rowgroup>
+          <member index="1"/>
+          <member index="3"/>
+          <member index="5"/>
+          <member index="7"/>
+          <member index="9"/>
+          <member index="11"/>
+          <member index="13"/>
+          <member index="15"/>
+          <member index="17"/>
+          <member index="19"/>
+        </rowgroup>
+        <colgroup>
+          <member index="1"/>
+          <member index="3"/>
+          <member index="5"/>
+          <member index="7"/>
+          <member index="9"/>
+          <member index="11"/>
+          <member index="13"/>
+          <member index="15"/>
+          <member index="17"/>
+          <member index="19"/>
+        </colgroup>
+        <constraints>
+          <card name="Display"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="8ed6" class="javax.swing.JLabel" binding="stepsLabel">
+            <constraints>
+              <grid row="20" column="0" row-span="1" col-span="19" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <font name="HarmonyOS Sans" size="12"/>
+              <horizontalAlignment value="0"/>
+              <text value="LEVELS：1,STEPS：0"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="7a82e" binding="pauseMenu" layout-manager="FormLayout">
+        <rowspec value="center:max(d;4px):grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):grow"/>
+        <colspec value="fill:max(d;4px):grow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;120px):noGrow"/>
+        <colspec value="left:5dlu:noGrow"/>
+        <colspec value="fill:max(d;4px):grow"/>
+        <constraints>
+          <card name="Pause"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="27c53" class="javax.swing.JButton" binding="returnGame">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="Return to Game"/>
+            </properties>
+          </component>
+          <component id="40534" class="javax.swing.JButton" binding="returnMenu">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="Return to Menu"/>
+            </properties>
+          </component>
+          <component id="3b42b" class="javax.swing.JButton" binding="quitGame">
+            <constraints>
+              <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <text value="Quit Game"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

@@ -1,8 +1,9 @@
-package sokoban;
-
+/**
+ * @author kyang
+ */
 public class Levels {
 
-    private static final int[][] level1 = {
+    private static final int[][] LEVEL1 = {
             {0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
             {0, 0, 0, 0, 1, 5, 1, 0, 0, 0},
             {0, 0, 0, 0, 1, 4, 1, 0, 0, 0},
@@ -14,7 +15,7 @@ public class Levels {
             {0, 0, 0, 1, 5, 1, 0, 0, 0, 0},
             {0, 0, 0, 1, 1, 1, 0, 0, 0, 0}
     };
-    private static final int[][] level2 = {
+    private static final int[][] LEVEL2 = {
             {1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
             {1, 2, 4, 4, 1, 0, 0, 0, 0, 0},
             {1, 4, 3, 3, 1, 0, 1, 1, 1, 0},
@@ -25,7 +26,7 @@ public class Levels {
             {0, 1, 4, 4, 5, 1, 1, 1, 1, 0},
             {0, 1, 1, 1, 1, 1, 0, 0, 0, 0}
     };
-    private static final int[][] level3 = {
+    private static final int[][] LEVEL3 = {
             {1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
             {1, 5, 5, 5, 5, 5, 1, 1, 1, 1},
             {1, 5, 1, 1, 1, 5, 1, 5, 5, 1},
@@ -37,7 +38,7 @@ public class Levels {
             {1, 5, 5, 5, 5, 5, 5, 5, 5, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
     };
-    private static final int[][] level4 = {
+    private static final int[][] LEVEL4 = {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 2, 5, 1, 5, 5, 5, 1, 5, 1},
             {1, 5, 5, 1, 5, 1, 5, 1, 5, 1},
@@ -49,7 +50,7 @@ public class Levels {
             {1, 5, 5, 5, 1, 1, 1, 1, 5, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
     };
-    private static final int[][] level5 = {
+    private static final int[][] LEVEL5 = {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 5, 5, 5, 5, 5, 5, 5, 5, 1},
             {1, 5, 1, 1, 5, 1, 1, 1, 5, 1},
@@ -64,19 +65,12 @@ public class Levels {
 
     public static int[][] getLevel(int n) {
         return switch (n) {
-            case 1 -> level1;
-            case 2 -> level2;
-            case 3 -> level3;
-            case 4 -> level4;
-            case 5 -> level5;
-            default -> levelFac();
+            case 1 -> LEVEL1;
+            case 2 -> LEVEL2;
+            case 3 -> LEVEL3;
+            case 4 -> LEVEL4;
+            case 5 -> LEVEL5;
+            default -> throw new IllegalStateException("Unexpected value: " + n);
         };
-    }
-
-    private static int[][] levelFac() {
-        int[][] randomLevel = new int[0][];
-
-
-        return randomLevel;
     }
 }
