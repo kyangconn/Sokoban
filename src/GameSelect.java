@@ -13,17 +13,11 @@ public class GameSelect {
 
     public GameSelect(Sokoban game) {
         this.game = game;
-        ActionListener listener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        };
-        level1.addActionListener(listener);
-        level2.addActionListener(listener);
-        level3.addActionListener(listener);
-        level4.addActionListener(listener);
-        level5.addActionListener(listener);
+        level1.addActionListener(v -> game.initLevel(1));
+        level2.addActionListener(v -> game.initLevel(2));
+        level3.addActionListener(v -> game.initLevel(3));
+        level4.addActionListener(v -> game.initLevel(4));
+        level5.addActionListener(v -> game.initLevel(5));
     }
 
     public JPanel getGameSelect() {

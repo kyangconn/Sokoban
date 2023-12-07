@@ -5,12 +5,12 @@ import javax.swing.*;
  */
 public class Sokoban {
 
-    private static final int WALL = 1;
-    private static final int PLAYER = 2;
-    private static final int BOX = 3;
-    private static final int ROAD = 4;
-    private static final int DEST = 5;
-    private static final int BOX_DEST = 6;
+    public static final int WALL = 1;
+    public static final int PLAYER = 2;
+    public static final int BOX = 3;
+    public static final int ROAD = 4;
+    public static final int DEST = 5;
+    public static final int BOX_DEST = 6;
     public int levels = 1;
     public int steps = 0;
     private int playerX, playerY;
@@ -40,6 +40,14 @@ public class Sokoban {
         }
     }
 
+    public void switchToMainMenuPanel() {
+        frame.getContentPane().removeAll();
+        MainMenu mainMenu = new MainMenu(this);
+        frame.add(mainMenu.getMainMenu());
+        frame.validate();
+        frame.repaint();
+    }
+
     public void switchToGameSelectPanel() {
         frame.getContentPane().removeAll();
         GameSelect gameSelect = new GameSelect(this);
@@ -59,6 +67,8 @@ public class Sokoban {
     public void initLevel(int levels) {
         currentLevel = Levels.getLevel(levels);
         cacheLevel = Levels.getLevel(levels);
+        getPlayerPosition();
+        switchToGameLevelPanel();
     }
 
     public void getPlayerPosition() {

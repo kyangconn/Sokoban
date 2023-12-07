@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class GameLevel {
     private Sokoban game;
     private JPanel gameLevel;
-    private JPanel gameDisplay;
+    private GameDisplay gameDisplay;
     private JPanel pauseMenu;
     private JButton returnGame;
     private JButton returnMenu;
@@ -40,10 +40,15 @@ public class GameLevel {
         pauseMenu.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                gameDisplay.setVisible(!gameDisplay.isVisible());
+                pauseMenu.setVisible(false);
                 gameLevel.repaint();
             }
         });
+        returnGame.addActionListener(v -> {
+            pauseMenu.setVisible(false);
+            gameLevel.repaint();
+        });
+        returnMenu.addActionListener(v -> game.switchToMainMenuPanel());
         quitGame.addActionListener(v -> game.exitGame());
     }
 
