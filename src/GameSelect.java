@@ -1,7 +1,9 @@
 import javax.swing.*;
 
+/**
+ * @author kyang
+ */
 public class GameSelect {
-    private final Sokoban game;
     private JPanel gameSelect;
     private JButton level1;
     private JButton level2;
@@ -11,7 +13,6 @@ public class GameSelect {
     private JButton menu;
 
     public GameSelect(Sokoban game) {
-        this.game = game;
         level1.addActionListener(v -> game.initLevel(1));
         level2.addActionListener(v -> game.initLevel(2));
         level3.addActionListener(v -> game.initLevel(3));
