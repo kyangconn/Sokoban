@@ -4,24 +4,23 @@ import javax.swing.*;
  * @author kyang
  */
 public class Sokoban {
-
     public static final int WALL = 1;
     public static final int PLAYER = 2;
     public static final int BOX = 3;
     public static final int ROAD = 4;
     public static final int DEST = 5;
     public static final int BOX_DEST = 6;
+    private final JFrame frame;
     public int levels = 1;
     public int steps = 0;
     private int playerX, playerY;
     private int[][] currentLevel, cacheLevel;
-
-    private final JFrame frame;
+    private GameDisplay gameDisplay;
 
     public Sokoban() {
         frame = new JFrame("Sokoban");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(640, 640);
         frame.setLocationRelativeTo(null);
 
         MainMenu mainMenu = new MainMenu(this);
@@ -46,6 +45,7 @@ public class Sokoban {
         frame.add(mainMenu.getMainMenu());
         frame.validate();
         frame.repaint();
+        currentLevel = null;
     }
 
     public void switchToGameSelectPanel() {
@@ -56,22 +56,49 @@ public class Sokoban {
         frame.repaint();
     }
 
-    public void switchToGameLevelPanel() {
-        frame.getContentPane().removeAll();  // 移除所有组件
-        GameLevel gameLevel = new GameLevel(this);
-        frame.add(gameLevel.getGameLevel());
+    public void switchToGameDisplay() {
+        frame.getContentPane().removeAll();
+        if (currentLevel == null) {
+            initLevel(levels);
+        }
+        gameDisplay = new GameDisplay(this, currentLevel);
+        frame.add(gameDisplay);
+        gameDisplay.requestFocus();
         frame.validate();
         frame.repaint();
+    }
+
+    public void switchToPauseMenu() {
+        frame.getContentPane().removeAll();
+        GamePause pause = new GamePause(this);
+        frame.add(pause.getPauseMenu());
+        frame.validate();
+        frame.repaint();
+    }
+
+    public void switchToComplete() {
+        if (isGameComplete()) {
+            frame.getContentPane().removeAll();
+            GameComplete gameComplete = new GameComplete(this);
+            frame.add(gameComplete.getCompleteMenu());
+            frame.validate();
+            frame.repaint();
+        }
+    }
+
+    public void nextLevel() {
+        levels += 1;
+        initLevel(levels);
     }
 
     public void initLevel(int levels) {
         currentLevel = Levels.getLevel(levels);
         cacheLevel = Levels.getLevel(levels);
         getPlayerPosition();
-        switchToGameLevelPanel();
+        switchToGameDisplay();
     }
 
-    public void getPlayerPosition() {
+    private void getPlayerPosition() {
         for (int i = 0; i < currentLevel.length; i++) {
             for (int j = 0; j < currentLevel[i].length; j++) {
                 if (currentLevel[i][j] == PLAYER) {
@@ -81,6 +108,23 @@ public class Sokoban {
                 }
             }
         }
+    }
+
+    private boolean isGameComplete() {
+        for (int[] levelX : currentLevel) {
+            for (int levelY : levelX) {
+                if (levelY == BOX) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void updateGameDisplay() {
+        gameDisplay.setLevelData(currentLevel);
+        gameDisplay.setStepsLabel(levels, steps);
+        gameDisplay.repaint();
     }
 
     public void moveUp() {
@@ -114,6 +158,8 @@ public class Sokoban {
                 // No Other situations.
             }
         }
+        updateGameDisplay();
+        switchToComplete();
     }
 
     private void tryMoveBox(int boxY, int boxX, int playerY, int playerX) {
