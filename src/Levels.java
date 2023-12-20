@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @author kyang
  */
@@ -64,7 +66,7 @@ public class Levels {
     };
 
     public static int[][] getLevel(int n) {
-        return switch (n) {
+        int[][] original = switch (n) {
             case 1 -> LEVEL1;
             case 2 -> LEVEL2;
             case 3 -> LEVEL3;
@@ -72,5 +74,14 @@ public class Levels {
             case 5 -> LEVEL5;
             default -> throw new IllegalStateException("Unexpected value: " + n);
         };
+        return deepCopyLevel(original);
+    }
+
+    private static int[][] deepCopyLevel(int[][] original) {
+        int[][] copy = new int[original.length][];
+        for (int i = 0; i < original.length; i++) {
+            copy[i] = Arrays.copyOf(original[i], original[i].length);
+        }
+        return copy;
     }
 }

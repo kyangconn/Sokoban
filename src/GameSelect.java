@@ -13,11 +13,26 @@ public class GameSelect {
     private JButton menu;
 
     public GameSelect(Sokoban game) {
-        level1.addActionListener(v -> game.initLevel(1));
-        level2.addActionListener(v -> game.initLevel(2));
-        level3.addActionListener(v -> game.initLevel(3));
-        level4.addActionListener(v -> game.initLevel(4));
-        level5.addActionListener(v -> game.initLevel(5));
+        level1.addActionListener(v -> {
+            game.initLevel(1);
+            game.switchToGameDisplay();
+        });
+        level2.addActionListener(v -> {
+            game.initLevel(2);
+            game.switchToGameDisplay();
+        });
+        level3.addActionListener(v -> {
+            game.initLevel(3);
+            game.switchToGameDisplay();
+        });
+        level4.addActionListener(v -> {
+            game.initLevel(4);
+            game.switchToGameDisplay();
+        });
+        level5.addActionListener(v -> {
+            game.initLevel(5);
+            game.switchToGameDisplay();
+        });
         menu.addActionListener(v -> game.switchToMainMenuPanel());
     }
 

@@ -62,6 +62,7 @@ public class Sokoban {
             initLevel(levels);
         }
         gameDisplay = new GameDisplay(this, currentLevel);
+        updateGameDisplay();
         frame.add(gameDisplay);
         gameDisplay.requestFocus();
         frame.validate();
@@ -94,7 +95,13 @@ public class Sokoban {
     public void initLevel(int levels) {
         currentLevel = Levels.getLevel(levels);
         cacheLevel = Levels.getLevel(levels);
+        this.levels = levels;
+        steps = 0;
         getPlayerPosition();
+    }
+
+    public void restartLevel() {
+        initLevel(levels);
         switchToGameDisplay();
     }
 
@@ -180,12 +187,14 @@ public class Sokoban {
     }
 
     private void movePlayer(int y, int x) {
-        if (cacheLevel[playerY][playerX] == PLAYER) {
+        if (cacheLevel[playerY][playerX] == PLAYER || cacheLevel[playerY][playerX] == BOX) {
             currentLevel[playerY][playerX] = ROAD;
+        } else {
+            currentLevel[playerY][playerX] = cacheLevel[playerY][playerX];
         }
-        currentLevel[playerY][playerX] = cacheLevel[playerY][playerX];
         playerY = y;
         playerX = x;
         currentLevel[playerY][playerX] = PLAYER;
+        steps++;
     }
 }
