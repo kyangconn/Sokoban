@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -45,26 +44,16 @@ public class GameDisplay extends JPanel {
 
     private void loadImages() {
         try {
-            wallImage = scaleImage(ImageIO.read(new File("/wall.png")));
-            playerImage = scaleImage(ImageIO.read(new File("/player.png")));
-            boxImage = scaleImage(ImageIO.read(new File("/box.png")));
-            roadImage = scaleImage(ImageIO.read(new File("/road.png")));
-            destImage = scaleImage(ImageIO.read(new File("/dest.png")));
-            boxOnDestImage = scaleImage(ImageIO.read(new File("/box_dest.png")));
-            unknown = scaleImage(ImageIO.read(new File("/unknown.png")));
+            wallImage = ImageIO.read(getClass().getResource("/wall.png"));
+            playerImage = ImageIO.read(getClass().getResource("/player.png"));
+            boxImage = ImageIO.read(getClass().getResource("/box.png"));
+            roadImage = ImageIO.read(getClass().getResource("/road.png"));
+            destImage = ImageIO.read(getClass().getResource("/dest.png"));
+            boxOnDestImage = ImageIO.read(getClass().getResource("/box_dest.png"));
+            unknown = ImageIO.read(getClass().getResource("/unknown.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private BufferedImage scaleImage(BufferedImage img) {
-        Image tmp = img.getScaledInstance(64, 64, Image.SCALE_SMOOTH);
-        BufferedImage scaledImg = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g2d = scaledImg.createGraphics();
-        g2d.drawImage(tmp, 0, 0, null);
-        g2d.dispose();
-        return scaledImg;
     }
 
     public void setLevelData(int[][] levelData) {
