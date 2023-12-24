@@ -81,6 +81,10 @@ public class Sokoban {
         if (isGameComplete()) {
             frame.getContentPane().removeAll();
             GameComplete gameComplete = new GameComplete(this);
+            if (levels == 5) {
+                //在最后一关把按钮消失掉
+                gameComplete.setNextLevelButton();
+            }
             frame.add(gameComplete.getCompleteMenu());
             frame.validate();
             frame.repaint();
