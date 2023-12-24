@@ -12,7 +12,6 @@ public class GameComplete {
 
     public GameComplete(Sokoban game) {
         completeMenu.setBackground(new Color(225, 225, 225, 64));
-
         nextLevelButton.addActionListener(v -> game.nextLevel());
         returnToMenuButton.addActionListener(v -> game.switchToMainMenuPanel());
         quitGameButton.addActionListener(v -> game.exitGame());
@@ -22,4 +21,7 @@ public class GameComplete {
         return completeMenu;
     }
 
+    public void setNextLevelButton() {
+        nextLevelButton.setEnabled(false);
+    }
 }

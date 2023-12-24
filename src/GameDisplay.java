@@ -45,13 +45,13 @@ public class GameDisplay extends JPanel {
 
     private void loadImages() {
         try {
-            wallImage = scaleImage(ImageIO.read(new File("res/wall.png")));
-            playerImage = scaleImage(ImageIO.read(new File("res/player.png")));
-            boxImage = scaleImage(ImageIO.read(new File("res/box.png")));
-            roadImage = scaleImage(ImageIO.read(new File("res/road.png")));
-            destImage = scaleImage(ImageIO.read(new File("res/dest.png")));
-            boxOnDestImage = scaleImage(ImageIO.read(new File("res/box_dest.png")));
-            unknown = scaleImage(ImageIO.read(new File("res/unknown.png")));
+            wallImage = scaleImage(ImageIO.read(new File("/wall.png")));
+            playerImage = scaleImage(ImageIO.read(new File("/player.png")));
+            boxImage = scaleImage(ImageIO.read(new File("/box.png")));
+            roadImage = scaleImage(ImageIO.read(new File("/road.png")));
+            destImage = scaleImage(ImageIO.read(new File("/dest.png")));
+            boxOnDestImage = scaleImage(ImageIO.read(new File("/box_dest.png")));
+            unknown = scaleImage(ImageIO.read(new File("/unknown.png")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
