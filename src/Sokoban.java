@@ -94,6 +94,7 @@ public class Sokoban {
     public void nextLevel() {
         levels += 1;
         initLevel(levels);
+        switchToGameDisplay();
     }
 
     public void initLevel(int levels) {
